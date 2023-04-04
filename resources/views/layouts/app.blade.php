@@ -203,34 +203,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item ">
+            <a href="{{ route('home') }}" class="nav-link {{ request()->is('home') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
+                Home
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('portfolios.index') }}" class="nav-link {{ request()->is('portfolios*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Portfolio
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>

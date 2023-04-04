@@ -19,3 +19,5 @@ Route::get('/', [\App\Http\Controllers\WebController::class, 'index']);
 Auth::routes(['register' => false, 'confirm' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/portfolios', \App\Http\Controllers\PortfolioController::class);
