@@ -8,7 +8,7 @@ class WebController extends Controller
 {
     public function index(Request $request)
     {
-        return view('home');
+        return view('welcome');
     }
 
     public function about(Request $request)
