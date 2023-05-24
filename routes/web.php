@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Test;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,6 @@ Auth::routes(['register' => false, 'confirm' => false]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/portfolios', \App\Http\Controllers\PortfolioController::class);
+
+Route::get('test',[Test::class,'index']);
+Route::get('test/category',[Test::class,'category']);
