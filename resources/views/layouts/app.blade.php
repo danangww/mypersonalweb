@@ -212,11 +212,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('categories.index') }}" class="nav-link {{ request()->is('categories*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Category
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('portfolios.index') }}" class="nav-link {{ request()->is('portfolios*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Portfolio
-                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -259,5 +267,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/js/adminlte.min.js') }}"></script>
+
+{{-- custom script untuk konfirmasi delte --}}
+<script>
+  function showDeleteConfirmation(formId) {
+    if (confirm('Delete?')) {
+      document.getElementById(formId).submit();
+    }
+  }
+</script>
 </body>
 </html>

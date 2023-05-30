@@ -26,36 +26,37 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                      @if($errors->any())
-                      <div class="alert alert-danger">
-                        There's some error(s):
-                        <ul>
-                          @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                          @endforeach
-                        </ul>  
-                      </div>
-                      @endif
+                        @include('_modules.alert')
 
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">
-                                  Add Portfolio
+                                    Add Portfolio
                                 </h3>
                             </div>
 
                             <form method="post" action="{{ route('portfolios.store') }}" enctype="multipart/form-data">
-                              @csrf
+                                @csrf
                                 <div class="card-body">
                                     <div class="form-group">
+                                        <label>Category</label>
+                                        <select name="category" class="form-control">
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label>Title</label>
-                                        <input type="text" class="form-control" 
-                                            placeholder="Enter title" name="title">
+                                        <input type="text" class="form-control" placeholder="Enter title" name="title">
                                     </div>
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <input type="text" class="form-control" 
-                                            placeholder="Description" name="description">
+                                        <input type="text" class="form-control" placeholder="Description"
+                                            name="description">
                                     </div>
                                     <div class="form-group">
                                         <label>Image</label>

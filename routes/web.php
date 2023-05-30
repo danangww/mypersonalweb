@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Test;
+use App\Http\Controllers\WebController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +18,12 @@ use App\Http\Controllers\Test;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\WebController::class, 'index']);
+Route::get('/', [WebController::class, 'index']);
 
 Auth::routes(['register' => false, 'confirm' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('/portfolios', \App\Http\Controllers\PortfolioController::class);
-
-Route::get('test',[Test::class,'index']);
-Route::get('test/category',[Test::class,'category']);
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/home', [HomeController::class, 'index'])->name('home');
+  Route::resource('/categories', CategoryController::class);
+  Route::resource('/portfolios', PortfolioController::class);
+});
