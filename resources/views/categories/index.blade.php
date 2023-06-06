@@ -39,7 +39,7 @@
 
               <a href="{{ route('categories.create') }}" class="btn btn-primary mb-2">Add</a>
 
-              <table class="table table-hover table-bordered">
+              <table class="table table-hover table-bordered datatables">
                 <thead>
                   <tr>
                     <th>No</th>

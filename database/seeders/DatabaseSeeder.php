@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -22,16 +23,14 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call(UsersTableSeeder::class);
+        // $this->call(UsersTableSeeder::class);
 
-        // $faker = Faker::create('id_US');
+        $faker = Faker::create('id_US');
 
-        // for ($i=1; $i <= 10; $i++) { 
-        //     User::create([
-        //         'name' => $faker->address,
-        //         'email' => $faker->email,
-        //         'password' => '',
-        //     ]);
-        // }
+        for ($i=1; $i <= 1000; $i++) { 
+            Category::create([
+                'name' => $faker->name,
+            ]);
+        }
     }
 }
