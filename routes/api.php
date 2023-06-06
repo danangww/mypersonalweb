@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,13 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('portfolios', [\App\Http\Controllers\ApiController::class, 'index']);
-Route::post('portfolios', [\App\Http\Controllers\ApiController::class, 'store']);
-Route::put('portfolios/{id}', [\App\Http\Controllers\ApiController::class, 'update']);
-Route::delete('portfolios/{id}', [\App\Http\Controllers\ApiController::class, 'destroy']);
+Route::post('login', [ApiController::class, 'login']);
+
+Route::group(['middleware' => ['auth:api']], function () {
+  Route::get('portfolios', [ApiController::class, 'index']);
+  Route::post('portfolios', [ApiController::class, 'store']);
+  Route::put('portfolios/{id}', [ApiController::class, 'update']);
+  Route::delete('portfolios/{id}', [ApiController::class, 'destroy']);
+
+  Route::post('logout', [ApiController::class, 'logout']);
+});

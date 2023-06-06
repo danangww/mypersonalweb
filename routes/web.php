@@ -6,6 +6,8 @@ use App\Http\Controllers\WebController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\CategoryController;
+use App\Mail\ExampleMail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +28,8 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/home', [HomeController::class, 'index'])->name('home');
   Route::resource('/categories', CategoryController::class);
   Route::resource('/portfolios', PortfolioController::class);
+});
+
+Route::get('/test/email', function() {
+  Mail::to("danangww31@gmail")->send(new ExampleMail());
 });
